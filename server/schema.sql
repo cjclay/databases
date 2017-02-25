@@ -1,12 +1,38 @@
+DROP DATABASE IF EXISTS chat;
+
 CREATE DATABASE chat;
 
 USE chat;
 
-CREATE TABLE messages (
-  /* Describe your table here.*/
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+USERNAME CHAR(20)
 );
 
-/* Create other tables and define schemas for them here! */
+
+DROP TABLE IF EXISTS rooms;
+
+CREATE TABLE rooms (
+ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+USERNAME CHAR(20)
+);
+
+
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE messages (
+ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+USERID INTEGER,
+ROOMID INTEGER,
+TEXT CHAR(140),
+FOREIGN KEY (USERID) 
+   REFERENCES users (ID),
+FOREIGN KEY (ROOMID)
+  REFERENCES rooms (ID)  
+);
 
 
 
@@ -14,4 +40,3 @@ CREATE TABLE messages (
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
-
