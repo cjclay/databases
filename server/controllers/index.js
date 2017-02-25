@@ -4,13 +4,11 @@ module.exports = {
   messages: {
     get: function (req, res) {}, // a function which handles a get request for all messages
     post: function (req, res) {
-       console.log('MESSAGE POST TRY:', req);
-
-      // models.users.post(req.body, function (results) {
-
-
-      //   res.send(results);
-      // });
+       console.log('MESSAGE POST TRY:', req.body);
+       
+      models.messages.post(req.body, function (results) {
+        res.send(results);
+      });
 
 
 
